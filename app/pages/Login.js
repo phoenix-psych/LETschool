@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import * as WebBrowser from "expo-web-browser";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Swiper from 'react-native-swiper';
+import { useOAuth } from "@clerk/clerk-expo";
+import { useWarmUpBrowser } from "../hooks/warmUpBrowser";
 import colours from '../shared/Colours';
 import { AntDesign } from '@expo/vector-icons'; 
-
+WebBrowser.maybeCompleteAuthSession();
 export default function Login() {
   const slides = [
     { image: require('./../assets/images/launch1.png'), text: 'Choose Your Course!!!' },
@@ -19,6 +22,24 @@ export default function Login() {
     }, 2000);
 
     return () => clearInterval(interval);
+  }, []);
+  useWarmUpBrowser();
+ 
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+ 
+  const onPress = React.useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
+ 
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
   }, []);
 
   return (
@@ -42,7 +63,7 @@ export default function Login() {
 
       <View style={styles.rectangle}>
         <TouchableOpacity 
-        
+        onPress={onPress}
         style={styles.button} activeOpacity={0.8}>
           <AntDesign name="google" size={24} color="white" style={{ marginRight: 10 }} />
           <Text style={{ color: 'white', fontSize: 20 }}>Sign in With Google</Text>
