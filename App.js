@@ -13,14 +13,13 @@ export default function App() {
       
       <SignedIn>     
           <NavigationContainer>
-            <Text>hiiii</Text>
             <TabNavigations/>
           </NavigationContainer>
         </SignedIn>
         <SignedOut>
         <Login />
         </SignedOut>
-      {/* <StatusBar style="auto" /> */}
+      <StatusBar style="auto" />
     </View>
     </ClerkProvider>
   );
@@ -30,6 +29,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    marginTop:50,
     //alignItems: 'center',
     //justifyContent: 'center',
   },

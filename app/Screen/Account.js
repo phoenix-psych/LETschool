@@ -1,10 +1,16 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+
+import { View, Text } from 'react-native';
+import React from 'react';
+import Header from '../Components/HomeScreen/Header';
+import { useUser } from '@clerk/clerk-expo';
 
 export default function Account() {
+  const { user } = useUser();
+
   return (
-    <View >
-      <Text >Account</Text>
+    <View>
+      <Header user={user} />
+     
     </View>
-  )
+  );
 }
