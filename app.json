@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "LETschool",
+    "scheme": "LETschoolapp",
     "slug": "LETschool",
     "version": "1.0.0",
     "orientation": "portrait",

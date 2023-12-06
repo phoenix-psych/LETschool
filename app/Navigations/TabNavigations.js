@@ -8,6 +8,7 @@ import Account from '../Screen/Account';
 import MyCourse from '../Screen/MyCourse';
 import Store from '../Screen/Store';
 import Wishlist from '../Screen/Wishlist';
+import StoreScreenNavigation from './StoreScreenNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -100,7 +101,7 @@ export default function TabNavigations() {
       />
       <Tab.Screen
         name='Store'
-        component={Store}
+        component={StoreScreenNavigation}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="store" size={size} color={color} />
