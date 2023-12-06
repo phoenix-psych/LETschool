@@ -32,7 +32,14 @@ export default function CourseList({ courseLevel }) {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('course-detail')}>
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('course-detail',
+           {
+             course:item
+          })}>
+              
+              
+              
               <View style={{
                 padding: 10,
                 backgroundColor: 'green',
@@ -62,6 +69,11 @@ export default function CourseList({ courseLevel }) {
                   </Text>
                 </View>
               </View>
+
+
+
+
+
             </TouchableOpacity>
           )}
         />
