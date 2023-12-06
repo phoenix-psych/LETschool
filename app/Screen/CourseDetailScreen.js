@@ -13,13 +13,13 @@ export default function CourseDetailScreen() {
   useEffect(()=>{
     console.log(params.course)
   },[params.course])
-  return (
+  return params.course&&(
     <View style={{padding:20,}}>
     <TouchableOpacity onPress={() => navigate.goBack()}>
    <Ionicons name="chevron-back" size={40} color="black" /> 
-   <DetailSection/>
+   
    </TouchableOpacity>
-  
+   <DetailSection course={params.course}/>
   </View>
   )
 }

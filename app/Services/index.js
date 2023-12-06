@@ -19,6 +19,9 @@ export const getCourseList = async (courseLevel) => {
         chapter {
           id
         }
+        description {
+          markdown
+        }
       }
     }
   `;
